@@ -1,3 +1,4 @@
 # Ignore these folders / files when formatting
 node_modules
 .angular
+dist
