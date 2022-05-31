@@ -1,0 +1,11 @@
+<main class="uk-container">
+  <input type="text" [(ngModel)]="newTodo" />
+
+  <button (click)="addTodo()">Add Todo</button>
+
+  <div class="list">
+    <div *ngFor="let item of todos" class="item">
+      <p>{{ item.text }}</p>
+    </div>
+  </div>
+</main>
