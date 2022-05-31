@@ -11,19 +11,16 @@ export type Todo = {
   selector: 'app-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss'],
+  providers: [TodosStorageService],
 })
 export class TodosComponent implements OnInit {
-  todos: Todo[] = [];
-  ss: TodosStorageService;
+  constructor(private todosStorageService: TodosStorageService) {}
 
+  todos: Todo[] = [];
   newTodo: string = '';
 
-  constructor(todosStorageService: TodosStorageService) {
-    this.ss = todosStorageService;
-  }
-
   ngOnInit(): void {
-    this.todos = this.ss.getTodos();
+    this.todos = this.todosStorageService.getTodos();
   }
 
   addTodo(): void {
@@ -35,6 +32,6 @@ export class TodosComponent implements OnInit {
 
     this.newTodo = '';
 
-    this.ss.setTodos(this.todos);
+    this.todosStorageService.setTodos(this.todos);
   }
 }
