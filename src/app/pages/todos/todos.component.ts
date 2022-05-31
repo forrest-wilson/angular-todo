@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodosStorageService } from 'src/app/services/todos-storage-service/todos-storage.service';
 
 export type Todo = {
