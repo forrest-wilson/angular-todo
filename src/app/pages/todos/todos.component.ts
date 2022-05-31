@@ -20,18 +20,21 @@ export class TodosComponent implements OnInit {
   newTodo: string = '';
 
   ngOnInit(): void {
-    this.todos = this.storageService.getTodos();
+    this.refreshTodoState();
   }
 
   addTodo(): void {
-    this.todos.push({
+    this.storageService.addTodo({
       id: 1,
       text: this.newTodo,
       isCompleted: false,
     });
 
-    this.newTodo = '';
+    this.refreshTodoState();
+  }
 
-    this.storageService.setTodos(this.todos);
+  refreshTodoState(): void {
+    this.newTodo = '';
+    this.todos = this.storageService.getTodos();
   }
 }

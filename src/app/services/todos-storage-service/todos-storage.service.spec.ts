@@ -22,11 +22,11 @@ describe('TodosStorageService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should set todos in localStorage', () => {
-    service.setTodos(mockTodos);
-    expect(JSON.parse(localStorage.getItem('ng-todos') ?? '')).toEqual(
-      jasmine.arrayContaining(mockTodos)
-    );
+  it('should add a todo to localStorage', () => {
+    service.addTodo(mockTodos[0]);
+    let todos = service.getTodos();
+
+    expect(todos).toEqual(jasmine.arrayContaining(mockTodos));
   });
 
   it('should get todos from localStorage', () => {

@@ -13,7 +13,14 @@ export class TodosStorageService {
     return JSON.parse(list ?? '[]');
   }
 
-  public setTodos(todos: Todo[]): void {
+  private setTodos(todos: Todo[]): void {
     localStorage.setItem(this.LS_KEY, JSON.stringify(todos));
+  }
+
+  public addTodo(todo: Todo): void {
+    let todos = this.getTodos();
+    todos.push(todo);
+
+    this.setTodos(todos);
   }
 }
