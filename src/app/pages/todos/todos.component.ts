@@ -14,13 +14,13 @@ export type Todo = {
   providers: [TodosStorageService],
 })
 export class TodosComponent implements OnInit {
-  constructor(private todosStorageService: TodosStorageService) {}
+  constructor(private storageService: TodosStorageService) {}
 
   todos: Todo[] = [];
   newTodo: string = '';
 
   ngOnInit(): void {
-    this.todos = this.todosStorageService.getTodos();
+    this.todos = this.storageService.getTodos();
   }
 
   addTodo(): void {
@@ -32,6 +32,6 @@ export class TodosComponent implements OnInit {
 
     this.newTodo = '';
 
-    this.todosStorageService.setTodos(this.todos);
+    this.storageService.setTodos(this.todos);
   }
 }
